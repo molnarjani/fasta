@@ -27,10 +27,7 @@ DEBUG = True
 
 ALLOWED_HOSTS = []
 
-CORS_ORIGIN_WHITELIST = (
-    'localhost:8000',
-    '127.0.0.1:9000'
-)
+CORS_ORIGIN_ALLOW_ALL = DEBUG
 
 # Application definition
 
