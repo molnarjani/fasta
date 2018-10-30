@@ -10,6 +10,8 @@ class Fast(TimeStampedModel):
 
     user = models.ForeignKey(
         User, on_delete=models.CASCADE, related_name='fasts')
+    start = models.DateTimeField(null=False)
+    end = models.DateTimeField(null=False)
 
     def __str__(self):
         return self.user.username
