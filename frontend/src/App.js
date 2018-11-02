@@ -1,29 +1,18 @@
 import React, { Component } from "react";
-import FastList from "./components/FastList";
-import "./App.css";
+import { Provider } from "react-redux";
 
-const API = "http://localhost:8000/api";
+import "./App.css";
+import FastList from "./components/FastList";
+import store from "./store";
 
 class App extends Component {
-  state = {
-    fasts: []
-  };
-
-  fetchFasts = () => {
-    fetch(`${API}/fasts`)
-      .then(response => response.json())
-      .then(data => this.setState({ fasts: data }));
-  };
-
-  componentDidMount() {
-    this.fetchFasts();
-  }
-
   render() {
     return (
-      <div className="App">
-        <FastList fasts={this.state.fasts} />
-      </div>
+      <Provider store={store}>
+        <div className="App">
+          <FastList />
+        </div>
+      </Provider>
     );
   }
 }

@@ -1,6 +1,13 @@
 import React, { Component } from "react";
+import PropTypes from "prop-types";
+import { connect } from "react-redux";
+import { fetchFasts } from "../actions/fastActions";
 
 class FastList extends Component {
+  componentWillMount() {
+    this.props.fetchFasts();
+  }
+
   render() {
     return (
       <React.Fragment>
@@ -15,4 +22,15 @@ class FastList extends Component {
   }
 }
 
-export default FastList;
+FastList.propTypes = {
+  fasts: PropTypes.arrayOf(PropTypes.object).isRequired
+};
+
+const mapStateToProps = state => ({
+  fasts: state.fasts.items
+});
+
+export default connect(
+  mapStateToProps,
+  { fetchFasts }
+)(FastList);
