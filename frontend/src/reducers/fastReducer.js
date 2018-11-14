@@ -19,7 +19,7 @@ export default function(state = initialState, action) {
     case DELETE_FAST:
       return {
         ...state,
-        items: state.items.filter(fast => fast.id != action.payload)
+        items: state.items.filter(fast => fast.id !== action.payload)
       };
     default:
       return state;
